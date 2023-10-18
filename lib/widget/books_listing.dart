@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
+import 'package:books_app/widget/booktile.dart';
+
 class BooksListing extends StatefulWidget {
   const BooksListing(this.query, {super.key});
 
@@ -39,37 +41,9 @@ class _BooksListingState extends State<BooksListing> {
       body: ListView.builder(
         itemCount: booksResponse == null ? 0 : booksResponse.length,
         itemBuilder: (context, index) {
-          return Card(
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(10.0),
-            ),
-            elevation: 5,
-            margin: const EdgeInsets.all(10),
-            child: Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                booksResponse[index]['volumeInfo']['imageLinks']['thumbnail'] != null
-                ? Image.network(
-                    booksResponse[index]['volumeInfo']['imageLinks']['thumbnail'],
-                    fit: BoxFit.fill,
-                  )
-                : Container(),
-                const SizedBox(width: 10),
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        booksResponse[index]['volumeInfo']['title'],
-                        style: const TextStyle(fontWeight: FontWeight.bold)
-                      ),
-                      const SizedBox(height: 5),
-                      booksResponse[index]['volumeInfo']['authors'] != null ? Text("Authors: ${booksResponse[index]['volumeInfo']['authors'].join(", ")}") : const Text(""),
-                    ],
-                  )
-                )
-              ],
-            ),
+          return GestureDetector(
+            child: BookTile(booksResponse[index]),
+            onTap: () => Navigator.pushNamed(context, '/details', arguments:booksResponse[index])
           );
         },
       ),

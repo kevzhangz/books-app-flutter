@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:books_app/widget/books_listing.dart';
 
-class BooksAppBar extends StatefulWidget {
-  const BooksAppBar(this.list, {super.key});
+class Books extends StatefulWidget {
+  const Books(this.list, {super.key});
 
   final List list;
 
   @override
-  State<BooksAppBar> createState() => _BooksAppBarState();
+  State<Books> createState() => _BooksState();
 }
 
-class _BooksAppBarState extends State<BooksAppBar> {
+class _BooksState extends State<Books> {
   @override
   Widget build(BuildContext context){
     return DefaultTabController(
@@ -35,6 +35,9 @@ class _BooksAppBarState extends State<BooksAppBar> {
               ),
             ],
             bottom: const TabBar(
+              indicatorSize: TabBarIndicatorSize.label,
+              indicatorWeight: 5,
+              indicatorColor: Colors.white,
               tabs: [
                 Tab(text: 'All'),
                 Tab(text: 'Education'),
