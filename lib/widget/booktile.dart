@@ -21,7 +21,11 @@ class BookTile extends StatelessWidget {
                   book['volumeInfo']['imageLinks']['thumbnail'],
                   fit: BoxFit.fill,
                 )
-              : Container(),
+              : Image.asset(
+                "assets/images/noImage.png",
+                width: 100,
+                fit: BoxFit.fill,
+              ),
               const SizedBox(width: 5),
               Expanded(
                   child: Column(
