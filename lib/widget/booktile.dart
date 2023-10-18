@@ -16,12 +16,24 @@ class BookTile extends StatelessWidget {
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              book['volumeInfo']['imageLinks']['thumbnail'] != null
+              book['volumeInfo']['imageLinks'] != null
               ? Image.network(
                   book['volumeInfo']['imageLinks']['thumbnail'],
                   fit: BoxFit.fill,
                 )
               : Container(),
+              const SizedBox(width: 5),
+              Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                          book['volumeInfo']['title'],
+                      ),
+                      const SizedBox(height: 5)
+                    ],
+                  ),
+              ),
             ],
           ),
         );
