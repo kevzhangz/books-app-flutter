@@ -25,7 +25,7 @@ class _BooksState extends State<Books> {
             actions: <Widget>[
               PopupMenuButton<String>(
                 itemBuilder: (BuildContext context) {
-                  return {'Logout', 'Settings'}.map((String choice) {
+                  return {'Light Mode', 'Dark Mode'}.map((String choice) {
                     return PopupMenuItem<String>(
                       value: choice,
                       child: Text(choice),
