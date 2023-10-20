@@ -10,9 +10,12 @@ void main() => runApp(const BooksApp());
 
 ThemeData defaultTheme = ThemeData(
     colorScheme: ColorScheme.fromSeed(
-      seedColor: fromCssColor('#0000FF')
+      seedColor: fromCssColor('#0000FF'),
+      primary: fromCssColor('#0000FF')
     ),
-    textTheme: GoogleFonts.poppinsTextTheme()
+    textTheme: GoogleFonts.poppinsTextTheme(
+      
+    )
 );
 
 class BooksApp extends StatelessWidget {
