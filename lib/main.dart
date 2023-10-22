@@ -1,21 +1,19 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:from_css_color/from_css_color.dart';
 
 import 'package:books_app/widget/books.dart';
 import 'package:books_app/widget/books_detail.dart';
 import 'package:books_app/widget/page_not_found.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:hexcolor/hexcolor.dart';
 
 void main() => runApp(const BooksApp());
 
 ThemeData defaultTheme = ThemeData(
     colorScheme: ColorScheme.fromSeed(
-      seedColor: fromCssColor('#0000FF'),
-      primary: fromCssColor('#0000FF')
+      seedColor: HexColor('#0000FF'),
+      primary: HexColor('#0000FF')
     ),
-    textTheme: GoogleFonts.poppinsTextTheme(
-      
-    )
+    textTheme: GoogleFonts.poppinsTextTheme()
 );
 
 class BooksApp extends StatelessWidget {

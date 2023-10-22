@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:from_css_color/from_css_color.dart';
+import 'package:hexcolor/hexcolor.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 
@@ -20,8 +20,8 @@ class BookDetailsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
 
-    final orange = fromCssColor('#F39C12');
-    final darkblue = fromCssColor("#00007C");
+    final orange = HexColor('#F39C12');
+    final darkblue = HexColor("#00007C");
     //Added Scaffold
     return Scaffold(
       //Buat Warna Background
