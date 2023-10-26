@@ -79,7 +79,7 @@ class BookDetailsPage extends StatelessWidget {
                       text: TextSpan(
                         children: [
                           const TextSpan(text:'Language', style: TextStyle(fontWeight: FontWeight.bold)),
-                          TextSpan(text: "\n ${book['volumeInfo']['language']}"),
+                          TextSpan(text: "\n ${book['volumeInfo']['language'] == 'id' ? 'Indonesia' : 'English'}"),
                         ],
                       ),
                     ),
@@ -90,7 +90,7 @@ class BookDetailsPage extends StatelessWidget {
                       text: TextSpan(
                         children: [
                           const TextSpan(text:'Published', style: TextStyle(fontWeight: FontWeight.bold)),
-                          TextSpan(text: "\n ${book['volumeInfo']['publishedDate']}"),
+                          TextSpan(text: "\n ${book['volumeInfo']['publishedDate'] ?? '-'}"),
                         ],
                       ),
                     ),
