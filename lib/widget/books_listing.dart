@@ -28,7 +28,7 @@ class _BooksListingState extends State<BooksListing> {
     var response = await makeHttpCall(query);
 
     //Updating booksResponse to fetched remote data
-    if(mounted){
+    if (mounted) {
       setState(() {
         booksResponse = response["items"];
       });
@@ -38,13 +38,14 @@ class _BooksListingState extends State<BooksListing> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Theme.of(context).colorScheme.primary,
       body: ListView.builder(
         itemCount: booksResponse == null ? 0 : booksResponse.length,
         itemBuilder: (context, index) {
           return GestureDetector(
-            child: BookTile(booksResponse[index]),
-            onTap: () => Navigator.pushNamed(context, '/details', arguments:booksResponse[index])
-          );
+              child: BookTile(booksResponse[index]),
+              onTap: () => Navigator.pushNamed(context, '/details',
+                  arguments: booksResponse[index]));
         },
       ),
     );

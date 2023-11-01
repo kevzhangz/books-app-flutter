@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:books_app/widget/books_listing.dart';
 import 'package:books_app/main.dart';
-import 'package:hexcolor/hexcolor.dart';
 
 class Books extends StatefulWidget {
   const Books(this.list, {super.key});
@@ -13,25 +12,27 @@ class Books extends StatefulWidget {
 }
 
 class _BooksState extends State<Books> {
-  final darkblue = HexColor('#0000fc');
-
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
       length: widget.list.length,
       child: Scaffold(
           appBar: AppBar(
-              // backgroundColor: Theme.of(context).colorScheme.primary,
-              backgroundColor: Theme.of(context).brightness == Brightness.light
-                  ? _themeClass.lightPrimaryColor
-                  : _themeClass.darkPrimaryColor,
+              backgroundColor: Theme.of(context).colorScheme.primary,
               centerTitle: true,
               leading: BackButton(
+                color: Theme.of(context).colorScheme.onTertiary,
                 onPressed: () {},
               ),
-              title: const Text("Book List"),
+              title: Text("Book List",
+                  style: Theme.of(context).textTheme.headline6),
               actions: <Widget>[
                 PopupMenuButton<String>(
+                  color: Theme.of(context).colorScheme.secondary,
+                  icon: Icon(
+                    Icons.more_vert,
+                    color: Theme.of(context).colorScheme.onTertiary,
+                  ),
                   itemBuilder: (BuildContext context) {
                     return {'Light Mode', 'Dark Mode'}.map((String choice) {
                       return PopupMenuItem<String>(

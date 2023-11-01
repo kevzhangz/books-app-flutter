@@ -1,6 +1,6 @@
 import 'package:books_app/main.dart';
 import 'package:flutter/material.dart';
-import 'package:hexcolor/hexcolor.dart';
+
 import 'package:url_launcher/url_launcher.dart';
 
 class BookDetailsPage extends StatelessWidget {
@@ -21,14 +21,10 @@ class BookDetailsPage extends StatelessWidget {
     //Added Scaffold
     return Scaffold(
       //Buat Warna Background
-      // backgroundColor: Theme.of(context).colorScheme.primary,
-      backgroundColor: Theme.of(context).brightness == Brightness.light
-          ? _themeClass.lightPrimaryColor
-          : _themeClass.darkPrimaryColor,
+      backgroundColor: Theme.of(context).colorScheme.surface,
+
       appBar: AppBar(
-        backgroundColor: Theme.of(context).brightness == Brightness.light
-            ? _themeClass.lightPrimaryColor
-            : _themeClass.darkPrimaryColor,
+        backgroundColor: Theme.of(context).colorScheme.surface,
         elevation: 0,
         centerTitle: true,
       ),
@@ -114,9 +110,7 @@ class BookDetailsPage extends StatelessWidget {
                         const BorderRadius.vertical(top: Radius.circular(30.0)),
                     child: Container(
                       width: width,
-                      color: Theme.of(context).brightness == Brightness.light
-                          ? _themeClass.descLight
-                          : _themeClass.descDark,
+                      color: Theme.of(context).colorScheme.secondary,
                       child: Column(
                         children: [
                           const SizedBox(height: 20),
@@ -137,28 +131,36 @@ class BookDetailsPage extends StatelessWidget {
                                 onPressed: () => _launchUrl(
                                     book['volumeInfo']['previewLink']),
                                 style: ElevatedButton.styleFrom(
-                                  backgroundColor: darkblue,
+                                  backgroundColor:
+                                      Theme.of(context).colorScheme.tertiary,
                                   padding: const EdgeInsets.only(
                                       top: 12, bottom: 12, left: 30, right: 30),
                                   shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(7),
                                   ),
                                 ),
-                                child: const Text("Read now"),
+                                child: const Text(
+                                  "Read now",
+                                  style: TextStyle(color: Colors.white),
+                                ),
                               ),
                               const SizedBox(width: 20),
                               ElevatedButton(
                                 onPressed: () =>
                                     _launchUrl(book['volumeInfo']['infoLink']),
                                 style: ElevatedButton.styleFrom(
-                                  backgroundColor: orange,
+                                  backgroundColor:
+                                      Theme.of(context).colorScheme.scrim,
                                   padding: const EdgeInsets.only(
                                       top: 12, bottom: 12, left: 30, right: 30),
                                   shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(7),
                                   ),
                                 ),
-                                child: const Text("Buy now"),
+                                child: const Text(
+                                  "Buy now",
+                                  style: TextStyle(color: Colors.white),
+                                ),
                               ),
                             ],
                           ),

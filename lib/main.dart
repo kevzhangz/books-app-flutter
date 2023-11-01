@@ -3,38 +3,43 @@ import 'package:flutter/material.dart';
 import 'package:books_app/widget/books.dart';
 import 'package:books_app/widget/books_detail.dart';
 import 'package:books_app/widget/page_not_found.dart';
-import 'package:google_fonts/google_fonts.dart';
+// import 'package:google_fonts/google_fonts.dart';
 import 'package:hexcolor/hexcolor.dart';
 
 void main() => runApp(const BooksApp());
 
 class ThemeClass {
-  Color lightPrimaryColor = HexColor('#FFFFFF');
-  Color darkPrimaryColor = HexColor('#09182D');
-  Color secondaryColor = HexColor('#ffffff');
-  Color accentColor = HexColor('#5b5b5b');
-  Color descLight = HexColor('#FFFFFF');
-  Color descDark = HexColor('#182B49');
+  Color white = HexColor('#FFFFFF');
+  Color darkBlueBlack = HexColor('#09182D');
+  Color spaceCadet = HexColor('#182B49');
+  Color blue = HexColor('#0000FF');
+  Color darkBlue = HexColor('#0000fc');
+  Color black = HexColor('#000000');
+  Color orangePeel = HexColor('#f39c12');
+  Color darkOrange = HexColor('#b67610');
 
   static ThemeData lightTheme = ThemeData(
       primaryColor: ThemeData.light().scaffoldBackgroundColor,
       colorScheme: const ColorScheme.light().copyWith(
-          primary: _themeClass.lightPrimaryColor,
-          secondary: _themeClass.secondaryColor),
-      textTheme: GoogleFonts.poppinsTextTheme());
+          primary: _themeClass.white,
+          secondary: _themeClass.white,
+          surface: _themeClass.blue,
+          tertiary: _themeClass.darkBlue,
+          scrim: _themeClass.orangePeel,
+          onTertiary: _themeClass.black),
+      textTheme: TextTheme(headline6: TextStyle(color: Colors.black)));
   static ThemeData darkTheme = ThemeData(
       primaryColor: ThemeData.dark().scaffoldBackgroundColor,
       colorScheme: const ColorScheme.dark().copyWith(
-          primary: _themeClass.darkPrimaryColor,
-          secondary: _themeClass.accentColor));
+          primary: _themeClass.darkBlueBlack,
+          secondary: _themeClass.spaceCadet,
+          surface: _themeClass.darkBlueBlack,
+          tertiary: _themeClass.darkBlueBlack,
+          scrim: _themeClass.darkOrange,
+          onTertiary: _themeClass.white),
+      textTheme: TextTheme(headline6: TextStyle(color: Colors.white)));
 }
 
-///////
-// ThemeData defaultTheme = ThemeData(
-//     colorScheme: ColorScheme.fromSeed(
-//         seedColor: HexColor('#0000FF'), primary: HexColor('#0000FF')),
-//     textTheme: GoogleFonts.poppinsTextTheme());
-//////
 class BooksApp extends StatefulWidget {
   const BooksApp({super.key});
 
@@ -57,7 +62,6 @@ class _BooksAppState extends State<BooksApp> {
       theme: ThemeClass.lightTheme,
       debugShowCheckedModeBanner: false,
       darkTheme: ThemeClass.darkTheme,
-      // darkTheme: ThemeData.dark(),
       themeMode: _themeMode,
       home: const Books(['All', 'Education', 'Fantasy']),
       initialRoute: '/',
