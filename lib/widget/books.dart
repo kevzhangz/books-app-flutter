@@ -47,15 +47,17 @@ class _BooksState extends State<Books> {
                   },
                 ),
               ],
-              bottom: const TabBar(
-                  indicatorSize: TabBarIndicatorSize.label,
-                  indicatorWeight: 5,
-                  indicatorColor: Colors.white,
-                  tabs: [
-                    Tab(text: 'All'),
-                    Tab(text: 'Education'),
-                    Tab(text: 'Fantasy'),
-                  ])),
+              bottom: TabBar(
+                indicatorSize: TabBarIndicatorSize.label,
+                indicatorWeight: 5,
+                indicatorColor: Theme.of(context).colorScheme.onTertiary,
+                tabs: const [
+                  Tab(text: 'Programming'),
+                  Tab(text: 'Education'),
+                  Tab(text: 'Fantasy'),
+                ]
+              )
+            ),
           body: const TabBarView(
             children: [
               BooksListing("Programming"),
