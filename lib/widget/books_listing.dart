@@ -1,3 +1,4 @@
+import 'package:books_app/model/book.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
@@ -30,7 +31,7 @@ class _BooksListingState extends State<BooksListing> {
     //Updating booksResponse to fetched remote data
     if (mounted) {
       setState(() {
-        booksResponse = response["items"];
+        booksResponse = response;
       });
     }
   }
@@ -59,6 +60,9 @@ makeHttpCall(query) async {
   final http.Response response = await http
       .get(Uri.parse(apiEndpoint), headers: {'Accept': 'application/json'});
 
-  //This will print `flutter: Instance of 'Response'` on console.
-  return jsonDecode(response.body);
+  final jsonObject = jsonDecode(response.body);
+
+  final list = jsonObject['items'] as List;
+
+  return list.map((e) => BookModel.fromJson(e)).toList();
 }

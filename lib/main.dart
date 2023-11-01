@@ -1,3 +1,4 @@
+import 'package:books_app/model/book.dart';
 import 'package:flutter/material.dart';
 
 import 'package:books_app/widget/books.dart';
@@ -87,11 +88,14 @@ Route<dynamic> routeList(RouteSettings routeSettings) {
       );
       break;
     case '/details':
-      route = MaterialPageRoute(
-        builder: (context) => BookDetailsPage(args),
-      );
+      if(args is BookModel){
+        route = MaterialPageRoute(
+          builder: (context) => BookDetailsPage(book: args),
+        );
+      } else {
+        route = MaterialPageRoute(builder: (context) => const PageNotFound());
+      }
       break;
-
     default:
       route = MaterialPageRoute(builder: (context) => const PageNotFound());
       break;

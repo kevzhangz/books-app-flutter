@@ -1,12 +1,13 @@
 import 'package:books_app/main.dart';
+import 'package:books_app/model/book.dart';
 import 'package:flutter/material.dart';
 
 import 'package:url_launcher/url_launcher.dart';
 
 class BookDetailsPage extends StatelessWidget {
-  const BookDetailsPage(this.book, {super.key});
+  final BookModel book;
+  const BookDetailsPage({super.key, required this.book});
 
-  final book;
 
   Future<dynamic> _launchUrl(url) async {
     final parsedUrl = Uri.parse(url);
@@ -36,7 +37,7 @@ class BookDetailsPage extends StatelessWidget {
               children: [
                 Container(
                   padding: const EdgeInsets.only(left: 40, right: 40),
-                  child: Text(book['volumeInfo']['title'],
+                  child: Text(book.volumeInfo.title,
                       textAlign: TextAlign.center,
                       style: const TextStyle(
                           fontWeight: FontWeight.bold, color: Colors.white)),
@@ -44,7 +45,7 @@ class BookDetailsPage extends StatelessWidget {
                 const SizedBox(height: 10),
                 Container(
                   padding: const EdgeInsets.only(left: 45, right: 45),
-                  child: Text(book['volumeInfo']['authors'].join(", "),
+                  child: Text(book.volumeInfo.authors.join(", "),
                       textAlign: TextAlign.center,
                       style: const TextStyle(color: Colors.white)),
                 ),
@@ -55,7 +56,7 @@ class BookDetailsPage extends StatelessWidget {
                   child: ClipRRect(
                       borderRadius: BorderRadius.circular(10.0),
                       child: Image.network(
-                          book['volumeInfo']['imageLinks']['thumbnail'],
+                          book.volumeInfo.imageLinks.thumbnail,
                           fit: BoxFit.fill)),
                 ),
                 const SizedBox(height: 40),
@@ -68,7 +69,7 @@ class BookDetailsPage extends StatelessWidget {
                           style: TextStyle(fontWeight: FontWeight.bold)),
                       TextSpan(
                           text:
-                              "\n${book['volumeInfo']['categories'] != null ? book['volumeInfo']['categories'][0] : ''}"),
+                              "\n${book.volumeInfo.categories}"),
                     ],
                   ),
                 ),
@@ -83,7 +84,7 @@ class BookDetailsPage extends StatelessWidget {
                               text: 'Language',
                               style: TextStyle(fontWeight: FontWeight.bold)),
                           TextSpan(
-                              text: "\n ${book['volumeInfo']['language']}"),
+                              text: "\n ${book.volumeInfo.language}"),
                         ],
                       ),
                     ),
@@ -98,7 +99,7 @@ class BookDetailsPage extends StatelessWidget {
                               style: TextStyle(fontWeight: FontWeight.bold)),
                           TextSpan(
                               text:
-                                  "\n ${book['volumeInfo']['publishedDate']}"),
+                                  "\n ${book.volumeInfo.publishedDate}"),
                         ],
                       ),
                     ),
@@ -121,15 +122,14 @@ class BookDetailsPage extends StatelessWidget {
                           Container(
                             padding: const EdgeInsets.only(
                                 top: 20, left: 25, right: 25),
-                            child: Text(book['volumeInfo']['description']),
+                            child: Text(book.volumeInfo.description),
                           ),
                           const SizedBox(height: 15),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               ElevatedButton(
-                                onPressed: () => _launchUrl(
-                                    book['volumeInfo']['previewLink']),
+                                onPressed: () => _launchUrl(book.volumeInfo.previewLink),
                                 style: ElevatedButton.styleFrom(
                                   backgroundColor:
                                       Theme.of(context).colorScheme.tertiary,
@@ -147,7 +147,7 @@ class BookDetailsPage extends StatelessWidget {
                               const SizedBox(width: 20),
                               ElevatedButton(
                                 onPressed: () =>
-                                    _launchUrl(book['volumeInfo']['infoLink']),
+                                    _launchUrl(book.volumeInfo.infoLink),
                                 style: ElevatedButton.styleFrom(
                                   backgroundColor:
                                       Theme.of(context).colorScheme.scrim,
