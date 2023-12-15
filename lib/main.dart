@@ -64,7 +64,7 @@ class _BooksAppState extends State<BooksApp> {
       debugShowCheckedModeBanner: false,
       darkTheme: ThemeClass.darkTheme,
       themeMode: _themeMode,
-      home: const Books(['All', 'Education', 'Fantasy']),
+      home: const Books(['Programming', 'Education', 'Fantasy']),
       initialRoute: '/',
       onGenerateRoute: routeList,
     );
@@ -84,11 +84,12 @@ Route<dynamic> routeList(RouteSettings routeSettings) {
   switch (routeSettings.name) {
     case '/':
       route = MaterialPageRoute(
-        builder: (context) => const Books(['All', 'Education', 'Fantasy']),
+        builder: (context) =>
+            const Books(['Programming', 'Education', 'Fantasy']),
       );
       break;
     case '/details':
-      if(args is BookModel){
+      if (args is BookModel) {
         route = MaterialPageRoute(
           builder: (context) => BookDetailsPage(book: args),
         );

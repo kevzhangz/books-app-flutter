@@ -63,7 +63,7 @@ class BookTile extends StatelessWidget {
                           child: Row(
                             children: [
                               Text(
-                                "Language: ${book.volumeInfo.language == 'id' ? 'Indonesia' : 'English'}",
+                                "Language: ${book.volumeInfo.language}",
                                 style: const TextStyle(fontSize: 12),
                               ),
                               const SizedBox(width: 30),
